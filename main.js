@@ -18,25 +18,35 @@ $searchInput.blur(function(){
 //blur
 
 $searchInput.keyup(function(e){
+
     if(e.keyCode > 40 || e.keyCode == 8 || e.keyCode == 32) {
       $autoList.empty().hide();
       clearTimeout(timeoutid);
       timeoutid = setTimeout(getData,300);
+      console.log(selected);
     }
     else if(e.keyCode == 38){
-      //up
       if(selected == -1){
         setSelected($autoList.find('div').length - 1);
       }
       else {
         setSelected(selected - 1);
       }
+      e.preventDefault();
+      console.log(selected);
     }
-    else{
-      setSelected(selected + 1);
+    //up
+    else if(e.keyCode == 40) {
+      if(selected == -1){
+        setSelected(0);
+      }
+      else {
+        setSelected(selected + 1);
+      }
+      e.preventDefault();
+      console.log(selected);
     }
-    //if
-    e.preventDefault();
+    //down
   })
   .keypress(function(e){
     //enter
@@ -52,17 +62,19 @@ $searchInput.keyup(function(e){
 //searchInput event signed
 
 var setSelected = function(item){
-  selectedItem = item ;
-  //按上下键是循环显示的，小于0就置成最大的值，大于最大值就置成0
+  selected = item ;
+  console.log(selected);
+
   if(selected < 0){
     selected = $autoList.find('div').length - 1;
   }
-  else if(selected > $autoList.find('div').length-1 ) {
+  else if(selected > $autoList.find('div').length - 1 ) {
     selected = 0;
   };
+  console.log(selected);
 
-  $autoList.find('div').removeClass('highlight')
-  .eq(selected).addClass('highlight');
+  $autoList.find('div').removeClass('highlight').eq(selected).addClass('highlight');
+
 };
 //func setSelected
 
@@ -111,9 +123,9 @@ var getData = function(){
       }
       //if
     })
-    //get
-    setSelected(0);
     //Initializing the list
     $autoList.show();
+    //get
+    setSelected(-1);
 }
 //func getData
