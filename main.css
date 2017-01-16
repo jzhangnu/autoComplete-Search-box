@@ -1,0 +1,62 @@
+body{
+  background: #3589BC;
+  font-family: 'Overpass Mono', monospace;
+}
+
+.app-header{
+  color: #fdfdfd;
+  margin: 50px;
+  font-size:26px;
+  text-align: center;
+}
+
+.app-search{
+  width: 550px;
+  margin: 0 auto;
+}
+
+#search-input{
+  width: 450px;
+  height: 30px;
+}
+
+#search-submit{
+  padding: 10px 15px;
+  background: #fff;
+  border: none;
+}
+
+.list-wrapper{
+  width: 550px;
+  margin: 0 auto;
+}
+
+#list{
+  display: none;
+  height: auto;
+  background: #fff;
+  float: left;
+  border-left: 1px #f3f3f3 solid;
+  border-right: 1px #f3f3f3 solid;
+  width: 453px;
+}
+
+#list > div{
+  font-size: 12px;
+  color: #3589BC;
+  border-bottom: 1px #f3f3f3 solid;
+  padding: 10px;
+  height: 60px;
+}
+
+#list > div > img{
+  width: 100px;
+  height: 60px;
+  float: left;
+  margin-right: 10px;
+}
+
+.highlight{
+  color: #fff !important;
+  background-color: #3589BC;
+}
